@@ -1,0 +1,5 @@
+export { PersonalInfoEditor } from './PersonalInfo'
+export { ExperienceEditor } from './ExperienceEditor'
+export { MetricsEditor } from './MetricsEditor'
+export { ExpertiseEditor } from './ExpertiseEditor'
+export { EducationEditor } from './EducationEditor'
