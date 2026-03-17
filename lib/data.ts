@@ -1,5 +1,5 @@
 // ============================================================================
-// PAUL FALOR - RESUME DATA
+// PAUL FALOR - SITE DATA
 // ============================================================================
 // This file contains all content for paulfalor.com
 // Edit the values below to update the website content
@@ -10,12 +10,12 @@
 // ----------------------------------------------------------------------------
 export const personalInfo = {
   name: 'Paul Falor',
-  title: 'CIO & Security Executive | Digital Transformation Leader',
+  title: 'Cybersecurity Practice Lead | Secure Digital Core',
   location: 'Atlanta, GA',
   email: 'paulfalor@gmail.com',
   phone: '(404) 840-9450',
   linkedin: 'https://www.linkedin.com/in/pfalor',
-  summary: `Results-driven executive with a proven track record leading global IT operations, security programs, and digital transformation initiatives that increase business value. Deep expertise in people industries including professional services, staffing, and consulting. Skilled at aligning technology strategy with enterprise objectives for public, private, and PE-backed organizations.`,
+  summary: `I lead the Secure Digital Core cybersecurity practice for the US at Accenture, helping enterprises architect and operate security programs that keep pace with cloud adoption, platform modernization, and evolving threats. With 20+ years leading global security and technology operations — including serving as CIO — I bring a practitioner's perspective to every engagement: security strategy grounded in operational reality.`,
 }
 
 // ----------------------------------------------------------------------------
@@ -29,10 +29,64 @@ export const credentials = [
 // QUICK STATS (shown in summary section)
 // ----------------------------------------------------------------------------
 export const stats = [
-  { value: 20, suffix: '+', label: 'Years Experience' },
-  { value: 5, suffix: '', label: 'Countries Led' },
+  { value: 20, suffix: '+', label: 'Years in Security & IT' },
+  { value: 5, suffix: '', label: 'Countries Secured' },
   { value: 1, suffix: 'B+', label: 'Revenue Enabled', prefix: '$' },
-  { value: 6, suffix: '', label: 'Acquisitions Integrated' },
+  { value: 6, suffix: '', label: 'M&A Integrations Led' },
+]
+
+// ----------------------------------------------------------------------------
+// PRACTICE AREAS (Secure Digital Core)
+// ----------------------------------------------------------------------------
+export const practiceAreas = [
+  {
+    id: 'platform-security',
+    title: 'Platform Security',
+    icon: 'platform',
+    headline: 'Your platforms are your business — they should be secured like it.',
+    description: `Enterprise platforms like SAP, ServiceNow, and Salesforce are the operational backbone of most large organizations, yet their security posture is often an afterthought. I help clients embed security into platform architecture from day one — identity governance, secure configuration management, and continuous posture monitoring — so that the systems running the business aren't also the ones exposing it.`,
+    outcomes: [
+      'Built comprehensive platform security program spanning ERP, HRIS, PSA, and CRM during multi-year digital transformation',
+      'Achieved compliance certification on first audit with zero critical findings across ISO27001, HITRUST, and GDPR',
+      'Replaced 19 legacy systems with hardened, modern platform stack',
+    ],
+  },
+  {
+    id: 'cloud-application-security',
+    title: 'Cloud & Application Security',
+    icon: 'cloud',
+    headline: 'Cloud adoption outpaces security controls at most enterprises.',
+    description: `The shift to cloud-native architectures creates tremendous opportunity — and tremendous exposure. I work with organizations to build cloud security programs that scale with adoption: CSPM/CWPP implementation, DevSecOps pipeline integration, container and API security, and cloud-native detection and response. The goal is security that enables speed rather than blocking it.`,
+    outcomes: [
+      'Executed full-scale cloud migration reducing TCO by 30% while strengthening security posture',
+      'Architected near real-time disaster recovery — 99.95% uptime, RTO reduced from 48 hours to 4 hours',
+      'Reduced mean time to detect by 75% and mean time to respond by 60% through cloud-native security operations',
+    ],
+  },
+  {
+    id: 'zero-trust',
+    title: 'Zero Trust',
+    icon: 'lock',
+    headline: 'Trust is a vulnerability. Verify everything, continuously.',
+    description: `Zero Trust isn't a product you buy — it's an architecture you build. I help organizations move beyond perimeter-based security toward identity-centric, least-privilege models aligned with NIST ZTA. That means microsegmentation, continuous verification, conditional access policies, and a maturity roadmap that meets the organization where it is today and moves it forward pragmatically.`,
+    outcomes: [
+      'Established global secure digital core spanning cloud, network, data, and platform security',
+      'Reduced average vulnerability age from 45 to 12 days with 99% critical patch compliance',
+      'Designed identity governance frameworks across 5 countries and multiple regulatory regimes',
+    ],
+  },
+  {
+    id: 'sase-infrastructure',
+    title: 'SASE & Infrastructure Security',
+    icon: 'network',
+    headline: 'The network perimeter dissolved. Security architecture must evolve with it.',
+    description: `With distributed workforces, cloud workloads, and SaaS sprawl, traditional network security models no longer hold. I help clients design and implement SASE architectures that converge SD-WAN, secure web gateways, CASB, and ZTNA into a unified security fabric — protecting users, data, and applications regardless of where they sit.`,
+    outcomes: [
+      'Led global technology operations across 5 countries with unified security architecture',
+      'Implemented advanced threat and vulnerability management reducing remediation time by 87%',
+      'Built security programs spanning on-prem, cloud, and hybrid infrastructure environments',
+    ],
+  },
 ]
 
 // ----------------------------------------------------------------------------
@@ -40,10 +94,27 @@ export const stats = [
 // ----------------------------------------------------------------------------
 export const experience = [
   {
+    id: 0,
+    company: 'Accenture',
+    role: 'Managing Director, Secure Digital Core Cybersecurity Practice Lead — US',
+    period: 'March 2026 - Present',
+    location: 'Atlanta, GA',
+    highlights: [
+      'Lead the US Secure Digital Core cybersecurity practice, helping enterprises architect and operate security programs across platform, cloud, application, zero trust, and infrastructure domains.',
+      'Advise C-suite and CISO clients on security strategy, translating complex technical risk into business-aligned roadmaps.',
+      'Drive practice growth across Platform Security, Cloud & Application Security, Zero Trust, and SASE & Infrastructure Security.',
+    ],
+    metrics: [
+      { label: 'Scope', value: 'US Practice' },
+      { label: 'Focus', value: 'Cybersecurity' },
+      { label: 'Domains', value: '4 Practice Areas' },
+    ],
+  },
+  {
     id: 1,
     company: 'North Highland',
     role: 'Chief Information Officer, Senior Managing Director, Security & Technology',
-    period: 'October 2014 - Present',
+    period: 'October 2014 - March 2026',
     location: 'Atlanta, GA',
     highlights: [
       'Led global technology operations across 5 countries and time zones, overseeing security, compliance, product development, infrastructure, data & analytics, and enterprise applications.',
@@ -288,58 +359,39 @@ export const education = [
 // ----------------------------------------------------------------------------
 export const thoughtLeadership = [
   {
-    title: 'The Future of AI in Enterprise Security',
-    category: 'AI Strategy',
-    description: 'Exploring how generative AI is transforming threat detection and response',
+    title: 'Why Zero Trust Fails Without Platform Security',
+    category: 'Zero Trust',
+    description: 'Most Zero Trust initiatives focus on network and identity — but ignore the platforms where data actually lives',
     status: 'coming-soon',
   },
   {
-    title: 'Building a Repeatable M&A Playbook',
-    category: 'M&A Integration',
-    description: 'Lessons learned from 6 successful technology integrations',
+    title: 'The CISO\'s Cloud Security Blind Spot',
+    category: 'Cloud Security',
+    description: 'Cloud-native doesn\'t mean cloud-secure. The gaps most organizations miss during migration.',
     status: 'coming-soon',
   },
   {
-    title: 'Digital Transformation in Professional Services',
-    category: 'Digital Transformation',
-    description: 'Key insights from replacing 19 legacy systems with modern platforms',
+    title: 'SASE Beyond the Buzzword',
+    category: 'SASE',
+    description: 'What a pragmatic SASE rollout actually looks like — and what vendors won\'t tell you',
     status: 'coming-soon',
   },
 ]
 
 // ----------------------------------------------------------------------------
-// PROJECTS (Coming Soon placeholders)
+// PROJECTS (kept for compatibility - not currently displayed)
 // ----------------------------------------------------------------------------
-export const projects = [
-  {
-    title: 'AI Security Assistant',
-    description: 'An AI-powered tool for automated security analysis and recommendations',
-    tags: ['AI', 'Security', 'Automation'],
-    status: 'coming-soon',
-  },
-  {
-    title: 'M&A Tech Assessment Framework',
-    description: 'Repeatable framework for technology due diligence in acquisitions',
-    tags: ['M&A', 'Framework', 'Assessment'],
-    status: 'coming-soon',
-  },
-  {
-    title: 'Compliance Dashboard',
-    description: 'Real-time compliance monitoring across multiple frameworks',
-    tags: ['Compliance', 'Dashboard', 'Monitoring'],
-    status: 'coming-soon',
-  },
-]
+export const projects: { title: string; description: string; tags: string[]; status: string }[] = []
 
 // ----------------------------------------------------------------------------
 // NAVIGATION
 // ----------------------------------------------------------------------------
 export const navigationItems = [
   { label: 'About', href: '#about' },
-  { label: 'Experience', href: '#experience' },
+  { label: 'Practice Areas', href: '#practice-areas' },
+  { label: 'Blog', href: 'https://blog.paulfalor.com' },
   { label: 'Impact', href: '#impact' },
-  { label: 'Expertise', href: '#expertise' },
-  { label: 'Education', href: '#education' },
+  { label: 'Experience', href: '#experience' },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -356,10 +408,10 @@ export const terminalCommands = {
   exit      - Exit terminal mode`,
   whoami: `Paul Falor
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-CIO & Security Executive | Digital Transformation Leader
+Cybersecurity Practice Lead | Secure Digital Core @ Accenture
 Location: Atlanta, GA
 Georgia CIO of the Year - InspireCIO
-20+ years leading global IT operations & security programs`,
+20+ years leading global security & technology operations`,
   skills: `Technical Expertise
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Security:     ISO27001, HITRUST, PCI-DSS, SOC2

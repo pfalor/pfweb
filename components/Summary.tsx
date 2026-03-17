@@ -20,7 +20,7 @@ export function Summary() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Executive Summary
+            About
           </h2>
           <p className="text-lg text-slate-400 leading-relaxed mb-8">
             {personalInfo.summary}

@@ -27,7 +27,11 @@ export function CommandPalette({ onOpenTerminal }: CommandPaletteProps) {
       id: item.href,
       label: `Go to ${item.label}`,
       action: () => {
-        document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' })
+        if (item.href.startsWith('http')) {
+          window.open(item.href, '_blank', 'noopener,noreferrer')
+        } else {
+          document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' })
+        }
         setIsOpen(false)
       },
       category: 'Navigation',

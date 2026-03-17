@@ -80,22 +80,26 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="flex flex-wrap justify-center gap-3 mb-12"
         >
-          {navigationItems.map((item, index) => (
-            <motion.a
-              key={item.href}
-              href={item.href}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3, delay: 0.6 + index * 0.1 }}
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-4 py-2 rounded-full bg-slate-800/50 border border-slate-700/50
-                        text-sm text-slate-300 hover:text-white hover:border-accent/50
-                        transition-colors duration-300"
-            >
-              {item.label}
-            </motion.a>
-          ))}
+          {navigationItems.map((item, index) => {
+            const isExternal = item.href.startsWith('http')
+            return (
+              <motion.a
+                key={item.href}
+                href={item.href}
+                {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3, delay: 0.6 + index * 0.1 }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-4 py-2 rounded-full bg-slate-800/50 border border-slate-700/50
+                          text-sm text-slate-300 hover:text-white hover:border-accent/50
+                          transition-colors duration-300"
+              >
+                {item.label}
+              </motion.a>
+            )
+          })}
         </motion.div>
 
         {/* Command palette hint */}

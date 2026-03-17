@@ -6,6 +6,7 @@ import {
   metrics,
   expertise,
   education,
+  practiceAreas,
 } from './data'
 
 export interface ResumeData {
@@ -16,6 +17,7 @@ export interface ResumeData {
   metrics: typeof metrics
   expertise: typeof expertise
   education: typeof education
+  practiceAreas: typeof practiceAreas
 }
 
 export function getStaticResumeData(): ResumeData {
@@ -27,5 +29,6 @@ export function getStaticResumeData(): ResumeData {
     metrics,
     expertise,
     education,
+    practiceAreas,
   }
 }

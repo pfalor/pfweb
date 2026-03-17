@@ -4,11 +4,10 @@ import { useState } from 'react'
 import { DataProvider } from '@/lib/DataContext'
 import { Hero } from '@/components/Hero'
 import { Summary } from '@/components/Summary'
-import { Timeline } from '@/components/Timeline'
-import { Metrics } from '@/components/Metrics'
-import { Expertise } from '@/components/Expertise'
+import { PracticeAreas } from '@/components/PracticeAreas'
 import { ThoughtLeadership } from '@/components/ThoughtLeadership'
-import { Projects } from '@/components/Projects'
+import { Metrics } from '@/components/Metrics'
+import { Timeline } from '@/components/Timeline'
 import { Education } from '@/components/Education'
 import { Contact } from '@/components/Contact'
 import { CommandPalette } from '@/components/CommandPalette'
@@ -34,11 +33,10 @@ export function ClientPage({ data }: ClientPageProps) {
         {/* Main Content */}
         <Hero />
         <Summary />
-        <Timeline />
-        <Metrics />
-        <Expertise />
+        <PracticeAreas />
         <ThoughtLeadership />
-        <Projects />
+        <Metrics />
+        <Timeline />
         <Education />
         <Contact />
       </main>
