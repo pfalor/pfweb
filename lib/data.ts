@@ -15,7 +15,7 @@ export const personalInfo = {
   email: 'paulfalor@gmail.com',
   phone: '(404) 840-9450',
   linkedin: 'https://www.linkedin.com/in/pfalor',
-  summary: `I lead Accenture's Secure, Responsible AI & Data Protection practice across the Americas — the United States, Canada, and Latin America — helping enterprises adopt AI boldly without outrunning their ability to secure it. My work spans three fronts: building the foundation, guardrails, and controls that let the business harness GenAI and frontier models safely; reimagining security operations with AI to match adversaries who now move faster and at lower cost; and protecting the data itself so that when something does go wrong, the exposure and blast radius stay contained. With 20+ years leading global security and technology operations — including serving as CIO — I bring a practitioner's perspective to every engagement: strategy grounded in operational reality.`,
+  summary: `I lead Accenture's Secure, Responsible AI & Data Protection practice across the Americas, covering the United States, Canada, and Latin America, helping enterprises adopt AI boldly without outrunning their ability to secure it. My work spans three fronts: building the foundation, guardrails, and controls that let the business use GenAI and frontier models safely; reimagining security operations with AI to match adversaries who now move faster and at lower cost; and protecting the data itself, so that when something does go wrong the exposure and blast radius stay contained. With more than 20 years leading global security and technology operations, including time as a CIO, I bring a practitioner's perspective to every engagement: strategy grounded in operational reality.`,
 }
 
 // ----------------------------------------------------------------------------
@@ -43,11 +43,11 @@ export const practiceAreas = [
     id: 'security-for-ai',
     title: 'Security for AI',
     icon: 'ai-shield',
-    headline: 'Adopt AI boldly — on a foundation built to contain its risks.',
-    description: `GenAI and frontier models are reshaping how the business operates, but they also open a new attack surface: prompt injection, model and data poisoning, sensitive-data leakage, and agents that act with real privileges. I help organizations put the foundation, guardrails, and controls in place — AI governance, model and pipeline security, runtime guardrails, and continuous evaluation — so the enterprise can capture AI's transformational upside without inheriting unmanaged risk.`,
+    headline: 'Adopt AI boldly, with a foundation built to contain its risks.',
+    description: `GenAI and frontier models are reshaping how the business operates, but they also open a new attack surface: prompt injection, model and data poisoning, sensitive-data leakage, and agents that act with real privileges. I help organizations put the foundation, guardrails, and controls in place, including AI governance, model and pipeline security, runtime guardrails, and continuous evaluation, so the enterprise can capture AI's upside without inheriting unmanaged risk.`,
     outcomes: [
       'Establish AI governance and risk frameworks aligned to NIST AI RMF, ISO 42001, and the EU AI Act',
-      'Embed guardrails and continuous evaluation across the model lifecycle — from data and fine-tuning to deployment and agentic workflows',
+      'Embed guardrails and continuous evaluation across the model lifecycle, from data and fine-tuning to deployment and agentic workflows',
       'Secure the AI supply chain: model provenance, data lineage, and third-party and open-source model risk',
     ],
   },
@@ -56,10 +56,10 @@ export const practiceAreas = [
     title: 'AI for Security',
     icon: 'ai-defense',
     headline: 'Attackers already use AI. Your defense has to answer in kind.',
-    description: `AI has lowered the barrier to entry for attackers and collapsed the time from intent to impact. Defending at that speed means rebuilding security operations around AI — not bolting it on. Riding a secure foundation, I help organizations redefine the methodology and processes so AI accelerates detection, triage, investigation, and response: agentic SOC workflows, automated threat analysis, and human-in-the-loop decisioning that keeps analysts focused on what matters.`,
+    description: `AI has lowered the barrier to entry for attackers and collapsed the time from intent to impact. Defending at that speed means rebuilding security operations around AI rather than bolting it on. I help organizations redefine the methodology and processes so AI accelerates detection, triage, investigation, and response, through agentic SOC workflows, automated threat analysis, and human-in-the-loop decisioning that keeps analysts focused on what matters.`,
     outcomes: [
       'Reduced mean time to detect by 75% and mean time to respond by 60% through modern, automation-driven security operations',
-      'Design AI-augmented SOC operating models — triage, enrichment, and response — with human-in-the-loop guardrails',
+      'Design AI-augmented SOC operating models for triage, enrichment, and response, with human-in-the-loop guardrails',
       'Reduced average vulnerability age from 45 to 12 days with 99% critical patch compliance',
     ],
   },
@@ -68,10 +68,10 @@ export const practiceAreas = [
     title: 'Data Protection',
     icon: 'data',
     headline: "You can't always prevent the breach. You can shrink the blast radius.",
-    description: `Every AI and digital initiative ultimately runs on data — which makes data both the prize and the liability. I help organizations minimize exposure across the data lifecycle with the full set of data protection disciplines: data security and classification, encryption, tokenization, and minimization. The goal is simple — reduce how much sensitive data is exposed, and contain the damage if an attacker ever gets through.`,
+    description: `Every AI and digital initiative ultimately runs on data, which makes data both the prize and the liability. I help organizations minimize exposure across the data lifecycle with the full set of data protection disciplines: data security and classification, encryption, tokenization, and minimization. The goal is simple: reduce how much sensitive data is exposed, and contain the damage if an attacker ever gets through.`,
     outcomes: [
       'Implement encryption, tokenization, and data minimization to reduce sensitive-data exposure and blast radius',
-      'Built risk and compliance programs aligned with ISO 27001, HITRUST, HIPAA, and GDPR — certified on first audit with zero critical findings',
+      'Built risk and compliance programs aligned with ISO 27001, HITRUST, HIPAA, and GDPR, certified on first audit with zero critical findings',
       'Design data classification and governance frameworks across multiple regulatory regimes',
     ],
   },
@@ -84,11 +84,11 @@ export const experience = [
   {
     id: 0,
     company: 'Accenture',
-    role: 'Managing Director, Secure, Responsible AI & Data Protection Practice Lead — Americas',
+    role: 'Managing Director, Secure, Responsible AI & Data Protection Practice Lead for the Americas',
     period: 'March 2026 - Present',
     location: 'Atlanta, GA',
     highlights: [
-      'Lead the Secure, Responsible AI & Data Protection practice across the Americas — US, Canada, and LATAM — helping enterprises adopt AI safely while protecting the data underneath.',
+      'Lead the Secure, Responsible AI & Data Protection practice across the Americas (US, Canada, and LATAM), helping enterprises adopt AI safely while protecting the data underneath.',
       'Advise C-suite, CISO, and CDO clients on Security for AI, AI for Security, and Data Protection, translating fast-moving technical risk into business-aligned roadmaps.',
       'Drive growth across a rapidly expanding practice spanning AI governance and guardrails, AI-augmented security operations, and data protection.',
     ],
@@ -403,7 +403,7 @@ export const terminalCommands = {
   exit      - Exit terminal mode`,
   whoami: `Paul Falor
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Practice Lead, Secure, Responsible AI & Data Protection — Americas @ Accenture
+Practice Lead, Secure, Responsible AI & Data Protection for the Americas @ Accenture
 Location: Atlanta, GA
 Georgia CIO of the Year - InspireCIO
 20+ years leading global security & technology operations`,
