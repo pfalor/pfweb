@@ -350,19 +350,25 @@ export const thoughtLeadership = [
     title: 'Securing the Enterprise Rush to GenAI',
     category: 'Security for AI',
     description: 'Guardrails, governance, and controls that let the business move fast on AI without inheriting unmanaged risk.',
-    status: 'coming-soon',
+    status: 'published',
+    slug: 'securing-the-enterprise-rush-to-genai',
+    readingTimeMinutes: 7,
   },
   {
     title: 'Rebuilding the SOC for an AI-Speed Adversary',
     category: 'AI for Security',
     description: 'Attackers have AI and a lower barrier to entry. What a security operation redesigned around AI actually looks like.',
-    status: 'coming-soon',
+    status: 'published',
+    slug: 'rebuilding-the-soc-for-an-ai-speed-adversary',
+    readingTimeMinutes: 8,
   },
   {
     title: 'Shrinking the Blast Radius',
     category: 'Data Protection',
     description: 'Why encryption, tokenization, and data minimization are your last and best line of defense.',
-    status: 'coming-soon',
+    status: 'published',
+    slug: 'shrinking-the-blast-radius',
+    readingTimeMinutes: 8,
   },
 ]
 
@@ -377,6 +383,7 @@ export const projects: { title: string; description: string; tags: string[]; sta
 export const navigationItems = [
   { label: 'About', href: '#about' },
   { label: 'Practice Areas', href: '#practice-areas' },
+  { label: 'Insights', href: '#thought-leadership' },
   { label: 'Blog', href: 'https://blog.paulfalor.com' },
   { label: 'Impact', href: '#impact' },
   { label: 'Experience', href: '#experience' },

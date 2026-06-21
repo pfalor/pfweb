@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { Section, SectionTitle } from '@/components/ui/Section'
 import { Badge } from '@/components/ui/Badge'
 import { thoughtLeadership } from '@/lib/data'
@@ -8,41 +9,75 @@ import { thoughtLeadership } from '@/lib/data'
 export function ThoughtLeadership() {
   return (
     <Section id="thought-leadership" className="bg-slate-900/30">
-      <SectionTitle subtitle="Perspectives on cybersecurity strategy, architecture, and operations">
-        Blog
+      <SectionTitle subtitle="In-depth perspectives on securing AI, defending with AI, and protecting the data underneath">
+        Insights
       </SectionTitle>
 
       <div className="grid md:grid-cols-3 gap-6 mb-12">
-        {thoughtLeadership.map((item, index) => (
-          <motion.div
-            key={item.title}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="relative group"
-          >
+        {thoughtLeadership.map((item, index) => {
+          const isPublished = item.status === 'published' && 'slug' in item && item.slug
+
+          const card = (
             <div className="bg-slate-800/50 border border-slate-700/50 rounded-xl p-6 h-full
-                          relative overflow-hidden">
-              {/* Coming soon overlay */}
-              <div className="absolute inset-0 bg-primary-900/80 backdrop-blur-sm flex items-center justify-center
-                            opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                <span className="px-4 py-2 bg-accent/20 border border-accent/30 rounded-full text-accent font-medium">
-                  Coming Soon
-                </span>
-              </div>
+                          relative overflow-hidden transition-colors duration-300
+                          group-hover:border-accent/40 flex flex-col">
+              {/* Coming soon overlay (only for unpublished) */}
+              {!isPublished && (
+                <div className="absolute inset-0 bg-primary-900/80 backdrop-blur-sm flex items-center justify-center
+                              opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                  <span className="px-4 py-2 bg-accent/20 border border-accent/30 rounded-full text-accent font-medium">
+                    Coming Soon
+                  </span>
+                </div>
+              )}
 
               {/* Content */}
               <Badge variant="outline" size="sm">{item.category}</Badge>
-              <h3 className="text-lg font-semibold text-white mt-4 mb-2">{item.title}</h3>
-              <p className="text-sm text-slate-400">{item.description}</p>
+              <h3 className="text-lg font-semibold text-white mt-4 mb-2 group-hover:text-accent transition-colors duration-300">
+                {item.title}
+              </h3>
+              <p className="text-sm text-slate-400 flex-1">{item.description}</p>
+
+              {isPublished && (
+                <div className="flex items-center justify-between mt-5 pt-4 border-t border-slate-700/50">
+                  <span className="text-xs text-slate-500">
+                    {'readingTimeMinutes' in item ? `${item.readingTimeMinutes} min read` : ''}
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 text-sm font-medium text-accent">
+                    Read insight
+                    <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </span>
+                </div>
+              )}
 
               {/* Decorative line */}
               <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-accent/50 to-transparent
                             transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
             </div>
-          </motion.div>
-        ))}
+          )
+
+          return (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="relative group"
+            >
+              {isPublished ? (
+                <Link href={`/insights/${item.slug}`} className="block h-full">
+                  {card}
+                </Link>
+              ) : (
+                card
+              )}
+            </motion.div>
+          )
+        })}
       </div>
 
       {/* Link to blog */}
