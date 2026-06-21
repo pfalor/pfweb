@@ -93,7 +93,7 @@ export default function PlaygroundClient({
       ? `Blocked at Layer 1 (input guardrail): ${hard.technique}`
       : hard.blockedLayer === 'output'
         ? 'Blocked at Layer 3 (output filter)'
-        : 'Handled by Layer 2 (defensive prompt)'
+        : 'No deterministic layer fired. This reply came from the model under the Layer 2 defensive prompt.'
     : null
 
   return (
