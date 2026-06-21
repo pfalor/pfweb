@@ -36,7 +36,7 @@ export async function GET(req: Request) {
           <div style={{ display: 'flex', alignItems: 'center', marginTop: 24 }}>
             <div style={{ fontSize: 96, fontWeight: 700, color: accent }}>{card.band}</div>
             <div style={{ fontSize: 48, color: '#64748b', marginLeft: 32 }}>
-              {card.score}/100
+              {`${card.score}/100`}
             </div>
           </div>
           <div style={{ fontSize: 34, marginTop: 16, maxWidth: 1000 }}>{card.verdict}</div>
