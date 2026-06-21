@@ -12,6 +12,7 @@ import { Education } from '@/components/Education'
 import { Contact } from '@/components/Contact'
 import { CommandPalette } from '@/components/CommandPalette'
 import { Terminal } from '@/components/Terminal'
+import { AskPaul } from '@/components/ai/AskPaul'
 import type { ResumeData } from '@/lib/resume-types'
 
 interface ClientPageProps {
@@ -39,6 +40,9 @@ export function ClientPage({ data }: ClientPageProps) {
         <Timeline />
         <Education />
         <Contact />
+
+        {/* Grounded AI assistant */}
+        <AskPaul />
       </main>
     </DataProvider>
   )
