@@ -10,7 +10,7 @@
 // ----------------------------------------------------------------------------
 export const personalInfo = {
   name: 'Paul Falor',
-  title: 'Practice Lead, Secure, Responsible AI & Data Protection | Americas',
+  title: 'Practice Lead | Secure, Responsible AI & Data Protection | Americas',
   location: 'Atlanta, GA',
   email: 'paulfalor@gmail.com',
   phone: '(404) 840-9450',
