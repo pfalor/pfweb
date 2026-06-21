@@ -24,7 +24,7 @@ export function decodeCardParams(params: URLSearchParams): CardData {
   const rawBand = params.get('band') as CardData['band'] | null
   const band = rawBand && BANDS.includes(rawBand) ? rawBand : 'Emerging'
   const score = Math.min(100, Math.max(0, Math.round(Number(params.get('score')) || 0)))
-  const verdict = params.get('verdict') ?? ''
-  const gaps = params.getAll('gap').slice(0, 3)
+  const verdict = (params.get('verdict') ?? '').slice(0, 160)
+  const gaps = params.getAll('gap').slice(0, 3).map((g) => g.slice(0, 90))
   return { band, score, verdict, gaps }
 }

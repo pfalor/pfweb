@@ -11,6 +11,45 @@ const BAND_COLOR: Record<string, string> = {
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url)
+
+  // Cover mode: no band param means this is the generic social-preview card
+  if (searchParams.get('band') === null) {
+    return new ImageResponse(
+      (
+        <div
+          style={{
+            width: '1200px',
+            height: '630px',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            background: '#0b1120',
+            color: '#e2e8f0',
+            padding: '64px',
+            fontFamily: 'sans-serif',
+          }}
+        >
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <div style={{ fontSize: 28, color: '#94a3b8', letterSpacing: 1 }}>
+              RED TEAM YOUR AI POLICY
+            </div>
+            <div style={{ fontSize: 72, fontWeight: 700, color: '#e2e8f0', marginTop: 32 }}>
+              Grade your AI policy in seconds.
+            </div>
+            <div style={{ fontSize: 34, color: '#94a3b8', marginTop: 24 }}>
+              Against NIST AI RMF, the EU AI Act, and the OWASP LLM Top 10.
+            </div>
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 24, color: '#94a3b8' }}>
+            <div>An interactive tool by Paul Falor</div>
+            <div>paulfalor.com/red-team</div>
+          </div>
+        </div>
+      ),
+      { width: 1200, height: 630 }
+    )
+  }
+
   const card = decodeCardParams(searchParams)
   const accent = BAND_COLOR[card.band]
 

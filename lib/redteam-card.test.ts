@@ -26,4 +26,15 @@ describe('redteam card params', () => {
     const decoded = decodeCardParams(new URLSearchParams(encodeCardParams(card)))
     expect(decoded.gaps).toEqual(['a', 'b', 'c'])
   })
+
+  it('clamps over-length verdict and gaps on decode', () => {
+    const params = new URLSearchParams()
+    params.set('band', 'Strong')
+    params.set('score', '90')
+    params.set('verdict', 'v'.repeat(300))
+    params.append('gap', 'g'.repeat(200))
+    const decoded = decodeCardParams(params)
+    expect(decoded.verdict).toHaveLength(160)
+    expect(decoded.gaps[0]).toHaveLength(90)
+  })
 })
