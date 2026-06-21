@@ -61,9 +61,13 @@ export default function InTheChairClient({ scenarios }: { scenarios: ScenarioCar
 
   function choose(choice: string) {
     if (!scenario || !beat) return
-    const nextHistory = [...history, { situation: beat.beat.situation, choice }]
-    setHistory(nextHistory)
-    void post(scenario.id, nextHistory)
+    const sid = scenario.id
+    const situation = beat.beat.situation
+    setHistory((prev) => {
+      const nextHistory = [...prev, { situation, choice }]
+      void post(sid, nextHistory)
+      return nextHistory
+    })
   }
 
   function reset() {
@@ -132,9 +136,9 @@ export default function InTheChairClient({ scenarios }: { scenarios: ScenarioCar
             <>
               <p className="mt-4 text-lg text-slate-100">{beat.beat.situation}</p>
               <div className="mt-6 space-y-3">
-                {beat.beat.choices.map((c, i) => (
+                {beat.beat.choices.map((c) => (
                   <button
-                    key={i}
+                    key={c}
                     onClick={() => choose(c)}
                     disabled={loading}
                     className="block w-full rounded-md border border-slate-600 bg-slate-800/30 p-4 text-left text-slate-100 hover:border-emerald-500 disabled:opacity-50"
@@ -162,7 +166,7 @@ export default function InTheChairClient({ scenarios }: { scenarios: ScenarioCar
                   <span className="text-slate-400">{a.score}</span>
                 </div>
                 <div className="mt-1 h-2 w-full rounded bg-slate-700">
-                  <div className={`h-2 rounded ${AXIS_COLOR}`} style={{ width: `${a.score}%` }} />
+                  <div className={`h-2 rounded ${AXIS_COLOR}`} style={{ width: `${Math.min(100, Math.max(0, a.score))}%` }} />
                 </div>
                 <p className="mt-1 text-sm text-slate-400">{a.note}</p>
               </div>
