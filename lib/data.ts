@@ -386,6 +386,7 @@ export const navigationItems = [
   { label: 'Practice Areas', href: '#practice-areas' },
   { label: 'Threat Lab', href: '/agentic-ai-threats' },
   { label: 'Red Team', href: '/red-team' },
+  { label: 'In the Chair', href: '/in-the-chair' },
   { label: 'AI Tools', href: '/ai-tools' },
   { label: 'Insights', href: '#thought-leadership' },
   { label: 'Blog', href: 'https://blog.paulfalor.com' },
