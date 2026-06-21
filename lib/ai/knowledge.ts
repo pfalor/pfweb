@@ -60,3 +60,17 @@ ${i.body}`)
 export function citationLabels(): string[] {
   return Object.values(SOURCE_LABELS)
 }
+
+// A lean grounding context for generative tools (assessment, briefing) — just
+// Paul's practice framing and POV theses, not the full POV bodies.
+export function compactContext(): string {
+  const areas = practiceAreas
+    .map((p) => `- ${p.title}: ${p.headline} ${p.description}`)
+    .join('\n')
+  const povs = insights.map((i) => `- ${i.title}: ${i.dek}`).join('\n')
+  return `Paul Falor leads Accenture's Secure, Responsible AI & Data Protection practice for the Americas. His three focus areas:
+${areas}
+
+His published positions:
+${povs}`
+}

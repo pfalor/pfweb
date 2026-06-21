@@ -90,11 +90,20 @@ export async function askAdvisor(opts: {
   const haiku = await runModel(HAIKU, redTeam, history, opts.message)
 
   if (haiku.onScope && (haiku.escalate || haiku.confidence === 'low')) {
-    const sonnet = await runModel(SONNET, redTeam, history, opts.message)
-    return {
-      ...sonnet,
-      model: 'Claude Sonnet 4.6',
-      routedReason: 'Escalated from Haiku for a nuanced question',
+    try {
+      const sonnet = await runModel(SONNET, redTeam, history, opts.message)
+      return {
+        ...sonnet,
+        model: 'Claude Sonnet 4.6',
+        routedReason: 'Escalated from Haiku for a nuanced question',
+      }
+    } catch {
+      // Sonnet unavailable (e.g., free-tier gateway). Keep Haiku's answer.
+      return {
+        ...haiku,
+        model: 'Claude Haiku 4.5',
+        routedReason: 'Handled by Haiku (escalation unavailable)',
+      }
     }
   }
 
