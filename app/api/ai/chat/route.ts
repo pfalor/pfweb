@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { askAdvisor, type ChatTurn } from '@/lib/ai/advisor'
+import { askAdvisor, redTeamTurn, type ChatTurn } from '@/lib/ai/advisor'
 import { detectInjection, detectPii } from '@/lib/ai/guardrails'
 import { rateLimit } from '@/lib/ai/ratelimit'
 
@@ -40,6 +40,54 @@ export async function POST(req: NextRequest) {
   // Deterministic input guardrails — power the transparency panel.
   const injection = detectInjection(message)
   const pii = detectPii(message)
+
+  // --- Red Team mode: return a two-layer defense report ---
+  if (body.redTeam) {
+    try {
+      const rt = await redTeamTurn({
+        message,
+        history: Array.isArray(body.history) ? body.history : [],
+      })
+      const attempted = rt.attempted || injection.detected
+      const defended = attempted ? rt.defended : true
+      const verdict = !attempted ? 'clean' : defended ? 'blocked' : 'leaked'
+      const owaspRef = attempted
+        ? injection.detected
+          ? 'OWASP LLM01: Prompt Injection'
+          : 'Scope & policy enforcement'
+        : undefined
+
+      return NextResponse.json({
+        reply: rt.reply,
+        defense: {
+          verdict,
+          technique: injection.attackType || (rt.technique && rt.technique.toLowerCase() !== 'none' ? rt.technique : null),
+          owaspRef,
+          explanation: rt.explanation,
+          layers: [
+            {
+              name: 'Layer 1 — Input guardrail (deterministic)',
+              caught: injection.detected,
+              detail: injection.detected
+                ? `Pattern matched: ${injection.attackType}`
+                : 'No known injection pattern matched',
+            },
+            {
+              name: 'Layer 2 — Grounded model + scope policy',
+              caught: attempted ? defended : false,
+              detail: rt.explanation,
+            },
+          ],
+        },
+      })
+    } catch (err) {
+      console.error('[ai/chat] red team error', err)
+      return NextResponse.json(
+        { error: 'The assistant is unavailable right now. Please try again.' },
+        { status: 502 }
+      )
+    }
+  }
 
   try {
     const result = await askAdvisor({
