@@ -36,13 +36,23 @@ cite, refuse otherwise" instructions.
 **Shared infra (`lib/ai/`):**
 - `knowledge.ts` — curated KB builder.
 - `guardrails.ts` — scope check + prompt-injection detection (shared).
-- `client.ts` — Vercel AI SDK + Claude (Sonnet 4.6 chat; Opus option for briefings).
-  Reuses existing `ANTHROPIC_API_KEY`.
-- `ratelimit.ts` — per-IP throttle + caching; plus Vercel BotID. Cost/abuse control
-  doubles as the responsible-AI story.
+- `client.ts` — AI SDK (`ai`@^6) through the **Vercel AI Gateway** (plain
+  `"anthropic/claude-..."` slugs, OIDC auth, zero markup, free monthly credits).
+  Call `gateway.getAvailableModels()` to resolve exact slugs; do not hardcode/guess.
+- `router.ts` — **Haiku-first with escalation**. Every query starts on Haiku 4.5;
+  escalate to Sonnet 4.6 (and rarely Opus 4.8) when the answer self-signals low
+  confidence or the question is flagged complex. Returns which model served + why.
+- `ratelimit.ts` — per-user/IP throttle + caching; plus Vercel BotID. The Gateway
+  also provides cost tracking, per-user rate limiting, and observability.
 
-**Structured response contract:** `{ text, citations[], scopeStatus, safetyFlags }`
-so the transparency panel reflects real state.
+**Cost levers:** (1) **prompt caching** on the fixed knowledge-base prefix
+(~0.1× reads — biggest win); (2) **model tiering** via the Haiku-first router;
+(3) **AI Gateway** zero-markup + free credits. Pricing reference (per MTok):
+Haiku 4.5 $1/$5, Sonnet 4.6 $3/$15, Opus 4.8 $5/$25.
+
+**Structured response contract:** `{ text, citations[], scopeStatus, safetyFlags, model, routedReason }`
+so the transparency panel reflects real state — including which model answered and
+why (right-sized, cost-aware AI shown as a credibility signal).
 
 **Features:**
 1. **"Ask Paul" advisor** — streaming chat in Paul's voice, citations, transparency
