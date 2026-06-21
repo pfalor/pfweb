@@ -50,6 +50,7 @@ export const practiceAreas = [
       'Embed guardrails and continuous evaluation across the model lifecycle, from data and fine-tuning to deployment and agentic workflows',
       'Secure the AI supply chain: model provenance, data lineage, and third-party and open-source model risk',
     ],
+    cta: { label: 'Try the interactive Agentic AI threat lab', href: '/agentic-ai-threats' },
   },
   {
     id: 'ai-for-security',
@@ -383,6 +384,7 @@ export const projects: { title: string; description: string; tags: string[]; sta
 export const navigationItems = [
   { label: 'About', href: '#about' },
   { label: 'Practice Areas', href: '#practice-areas' },
+  { label: 'Threat Lab', href: '/agentic-ai-threats' },
   { label: 'Insights', href: '#thought-leadership' },
   { label: 'Blog', href: 'https://blog.paulfalor.com' },
   { label: 'Impact', href: '#impact' },

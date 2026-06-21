@@ -29,6 +29,8 @@ export function CommandPalette({ onOpenTerminal }: CommandPaletteProps) {
       action: () => {
         if (item.href.startsWith('http')) {
           window.open(item.href, '_blank', 'noopener,noreferrer')
+        } else if (item.href.startsWith('/')) {
+          window.location.href = item.href
         } else {
           document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' })
         }

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Link from 'next/link'
 import { Section, SectionTitle } from '@/components/ui/Section'
 import { useResumeData } from '@/lib/DataContext'
 
@@ -72,6 +73,7 @@ export function PracticeAreas() {
       <div className="space-y-4">
         {practiceAreas.map((area, index) => {
           const isExpanded = expandedId === area.id
+          const cta = (area as { cta?: { label: string; href: string } }).cta
           return (
             <motion.div
               key={area.id}
@@ -141,6 +143,19 @@ export function PracticeAreas() {
                               ))}
                             </ul>
                           </div>
+
+                          {cta && (
+                            <Link
+                              href={cta.href}
+                              className="inline-flex items-center gap-2 mt-6 px-4 py-2 rounded-lg bg-accent/10 border border-accent/30
+                                       text-accent text-sm font-medium hover:bg-accent/20 transition-colors duration-200"
+                            >
+                              {cta.label}
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                              </svg>
+                            </Link>
+                          )}
                         </div>
                       </div>
                     </motion.div>
