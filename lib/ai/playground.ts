@@ -55,8 +55,14 @@ export function containsSecret(text: string): boolean {
   return normalize(text).includes(normalize(SECRET))
 }
 
-const OUTPUT_BLOCK_MESSAGE =
+export const OUTPUT_BLOCK_MESSAGE =
   'I cannot share that. (Output filter, Layer 3: the protected value appeared in my response, so it was blocked before leaving the server.)'
+
+// Replace the secret with a placeholder so prompt text can be shown on the page
+// without leaking the value. Used server-side before passing prompts to the client.
+export function redactSecret(text: string): string {
+  return text.split(SECRET).join('{{SECRET}}')
+}
 
 export function filterOutput(reply: string): { reply: string; blocked: boolean } {
   if (containsSecret(reply)) return { reply: OUTPUT_BLOCK_MESSAGE, blocked: true }

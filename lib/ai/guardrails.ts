@@ -32,6 +32,12 @@ export function detectInjection(input: string): InjectionResult {
   return { detected: false, attackType: null, matched: null }
 }
 
+// Read-only view of the injection patterns for display ("how this works" panel).
+// The patterns are non-sensitive (OWASP-style) and already implied by behavior.
+export function injectionPatterns(): { type: string; source: string }[] {
+  return INJECTION_PATTERNS.map((p) => ({ type: p.type, source: p.re.source }))
+}
+
 export interface PiiResult {
   found: boolean
   types: string[]

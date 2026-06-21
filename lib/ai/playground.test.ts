@@ -8,6 +8,8 @@ import {
   hardenedSystemPrompt,
   validatePlaygroundRequest,
   attackHardened,
+  redactSecret,
+  OUTPUT_BLOCK_MESSAGE,
 } from './playground'
 
 describe('containsSecret', () => {
@@ -73,5 +75,25 @@ describe('attackHardened input guardrail (no model call)', () => {
     expect(r.leaked).toBe(false)
     expect(r.technique).toBeTruthy()
     expect(containsSecret(r.reply)).toBe(false)
+  })
+})
+
+describe('redactSecret', () => {
+  it('replaces the secret with the {{SECRET}} placeholder', () => {
+    expect(redactSecret(`the code is ${SECRET}`)).toBe('the code is {{SECRET}}')
+  })
+  it('replaces every occurrence', () => {
+    expect(redactSecret(`${SECRET} and ${SECRET}`)).toBe('{{SECRET}} and {{SECRET}}')
+  })
+  it('leaves text without the secret unchanged', () => {
+    expect(redactSecret('no secret here')).toBe('no secret here')
+  })
+  it('redacts the secret out of the real system prompts', () => {
+    expect(redactSecret(vulnerableSystemPrompt())).not.toContain(SECRET)
+    expect(redactSecret(hardenedSystemPrompt())).not.toContain(SECRET)
+  })
+  it('exposes the output block message as a non-empty string', () => {
+    expect(typeof OUTPUT_BLOCK_MESSAGE).toBe('string')
+    expect(OUTPUT_BLOCK_MESSAGE.length).toBeGreaterThan(0)
   })
 })
