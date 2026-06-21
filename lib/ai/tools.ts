@@ -12,8 +12,8 @@ import { z } from 'zod'
 import { compactContext } from './knowledge'
 import { scoreAssessment, ASSESSMENT_QUESTIONS } from '../assessment'
 
-const ASSESS_MODEL = 'anthropic/claude-haiku-4.5' // → 'anthropic/claude-sonnet-4.6' with credits
-const BRIEF_MODEL = 'anthropic/claude-haiku-4.5' //  → 'anthropic/claude-opus-4.8' with credits
+const ASSESS_MODEL = 'anthropic/claude-sonnet-4.6' // tailored maturity recommendations
+const BRIEF_MODEL = 'anthropic/claude-opus-4.8' //   premium one-page briefing
 
 const CONTEXT = compactContext()
 
