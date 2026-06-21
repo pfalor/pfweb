@@ -91,8 +91,8 @@ export function Contact() {
             <div>
               <h3 className="text-2xl font-bold text-white mb-6">Quick Connect</h3>
               <p className="text-slate-400 mb-6">
-                Interested in discussing technology leadership, digital transformation,
-                or cybersecurity strategy? I&apos;d love to connect.
+                Interested in discussing securing AI adoption, AI-driven security
+                operations, or data protection strategy? I&apos;d love to connect.
               </p>
 
               <div className="space-y-4">

@@ -30,6 +30,33 @@ const icons: { [key: string]: React.ReactElement } = {
             d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
     </svg>
   ),
+  // Security for AI — a chip/AI core protected by a shield
+  'ai-shield': (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+            d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+            d="M9.5 12a2.5 2.5 0 105 0 2.5 2.5 0 00-5 0zM12 9.5V8m0 8v-1.5m2.5-2.5H16m-8 0H9.5" />
+    </svg>
+  ),
+  // AI for Security — radar sweep / active detection
+  'ai-defense': (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+            d="M12 12a9 9 0 11-6.36-8.6M12 12l6-6M12 12a4 4 0 10-2.83-1.17" />
+    </svg>
+  ),
+  // Data Protection — secured datastore
+  data: (
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+            d="M4 7c0-1.66 3.58-3 8-3s8 1.34 8 3-3.58 3-8 3-8-1.34-8-3z" />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+            d="M4 7v5c0 1.66 3.58 3 8 3 .7 0 1.37-.03 2-.1M20 7v3" />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+            d="M16 16.5a1.5 1.5 0 013 0V18m-4 0h5a1 1 0 011 1v2a1 1 0 01-1 1h-5a1 1 0 01-1-1v-2a1 1 0 011-1z" />
+    </svg>
+  ),
 }
 
 export function PracticeAreas() {
@@ -38,7 +65,7 @@ export function PracticeAreas() {
 
   return (
     <Section id="practice-areas">
-      <SectionTitle subtitle="Secure Digital Core — the cybersecurity domains where I help enterprises build resilience">
+      <SectionTitle subtitle="Where I help enterprises secure AI, defend with AI, and protect the data underneath">
         Practice Areas
       </SectionTitle>
 

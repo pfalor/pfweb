@@ -10,12 +10,12 @@
 // ----------------------------------------------------------------------------
 export const personalInfo = {
   name: 'Paul Falor',
-  title: 'Cybersecurity Practice Lead | Secure Digital Core',
+  title: 'Practice Lead, Secure, Responsible AI & Data Protection | Americas',
   location: 'Atlanta, GA',
   email: 'paulfalor@gmail.com',
   phone: '(404) 840-9450',
   linkedin: 'https://www.linkedin.com/in/pfalor',
-  summary: `I lead the Secure Digital Core cybersecurity practice for the US at Accenture, helping enterprises architect and operate security programs that keep pace with cloud adoption, platform modernization, and evolving threats. With 20+ years leading global security and technology operations — including serving as CIO — I bring a practitioner's perspective to every engagement: security strategy grounded in operational reality.`,
+  summary: `I lead Accenture's Secure, Responsible AI & Data Protection practice across the Americas — the United States, Canada, and Latin America — helping enterprises adopt AI boldly without outrunning their ability to secure it. My work spans three fronts: building the foundation, guardrails, and controls that let the business harness GenAI and frontier models safely; reimagining security operations with AI to match adversaries who now move faster and at lower cost; and protecting the data itself so that when something does go wrong, the exposure and blast radius stay contained. With 20+ years leading global security and technology operations — including serving as CIO — I bring a practitioner's perspective to every engagement: strategy grounded in operational reality.`,
 }
 
 // ----------------------------------------------------------------------------
@@ -40,51 +40,39 @@ export const stats = [
 // ----------------------------------------------------------------------------
 export const practiceAreas = [
   {
-    id: 'platform-security',
-    title: 'Platform Security',
-    icon: 'platform',
-    headline: 'Your platforms are your business — they should be secured like it.',
-    description: `Enterprise platforms like SAP, ServiceNow, and Salesforce are the operational backbone of most large organizations, yet their security posture is often an afterthought. I help clients embed security into platform architecture from day one — identity governance, secure configuration management, and continuous posture monitoring — so that the systems running the business aren't also the ones exposing it.`,
+    id: 'security-for-ai',
+    title: 'Security for AI',
+    icon: 'ai-shield',
+    headline: 'Adopt AI boldly — on a foundation built to contain its risks.',
+    description: `GenAI and frontier models are reshaping how the business operates, but they also open a new attack surface: prompt injection, model and data poisoning, sensitive-data leakage, and agents that act with real privileges. I help organizations put the foundation, guardrails, and controls in place — AI governance, model and pipeline security, runtime guardrails, and continuous evaluation — so the enterprise can capture AI's transformational upside without inheriting unmanaged risk.`,
     outcomes: [
-      'Built comprehensive platform security program spanning ERP, HRIS, PSA, and CRM during multi-year digital transformation',
-      'Achieved compliance certification on first audit with zero critical findings across ISO27001, HITRUST, and GDPR',
-      'Replaced 19 legacy systems with hardened, modern platform stack',
+      'Establish AI governance and risk frameworks aligned to NIST AI RMF, ISO 42001, and the EU AI Act',
+      'Embed guardrails and continuous evaluation across the model lifecycle — from data and fine-tuning to deployment and agentic workflows',
+      'Secure the AI supply chain: model provenance, data lineage, and third-party and open-source model risk',
     ],
   },
   {
-    id: 'cloud-application-security',
-    title: 'Cloud & Application Security',
-    icon: 'cloud',
-    headline: 'Cloud adoption outpaces security controls at most enterprises.',
-    description: `The shift to cloud-native architectures creates tremendous opportunity — and tremendous exposure. I work with organizations to build cloud security programs that scale with adoption: CSPM/CWPP implementation, DevSecOps pipeline integration, container and API security, and cloud-native detection and response. The goal is security that enables speed rather than blocking it.`,
+    id: 'ai-for-security',
+    title: 'AI for Security',
+    icon: 'ai-defense',
+    headline: 'Attackers already use AI. Your defense has to answer in kind.',
+    description: `AI has lowered the barrier to entry for attackers and collapsed the time from intent to impact. Defending at that speed means rebuilding security operations around AI — not bolting it on. Riding a secure foundation, I help organizations redefine the methodology and processes so AI accelerates detection, triage, investigation, and response: agentic SOC workflows, automated threat analysis, and human-in-the-loop decisioning that keeps analysts focused on what matters.`,
     outcomes: [
-      'Executed full-scale cloud migration reducing TCO by 30% while strengthening security posture',
-      'Architected near real-time disaster recovery — 99.95% uptime, RTO reduced from 48 hours to 4 hours',
-      'Reduced mean time to detect by 75% and mean time to respond by 60% through cloud-native security operations',
-    ],
-  },
-  {
-    id: 'zero-trust',
-    title: 'Zero Trust',
-    icon: 'lock',
-    headline: 'Trust is a vulnerability. Verify everything, continuously.',
-    description: `Zero Trust isn't a product you buy — it's an architecture you build. I help organizations move beyond perimeter-based security toward identity-centric, least-privilege models aligned with NIST ZTA. That means microsegmentation, continuous verification, conditional access policies, and a maturity roadmap that meets the organization where it is today and moves it forward pragmatically.`,
-    outcomes: [
-      'Established global secure digital core spanning cloud, network, data, and platform security',
+      'Reduced mean time to detect by 75% and mean time to respond by 60% through modern, automation-driven security operations',
+      'Design AI-augmented SOC operating models — triage, enrichment, and response — with human-in-the-loop guardrails',
       'Reduced average vulnerability age from 45 to 12 days with 99% critical patch compliance',
-      'Designed identity governance frameworks across 5 countries and multiple regulatory regimes',
     ],
   },
   {
-    id: 'sase-infrastructure',
-    title: 'SASE & Infrastructure Security',
-    icon: 'network',
-    headline: 'The network perimeter dissolved. Security architecture must evolve with it.',
-    description: `With distributed workforces, cloud workloads, and SaaS sprawl, traditional network security models no longer hold. I help clients design and implement SASE architectures that converge SD-WAN, secure web gateways, CASB, and ZTNA into a unified security fabric — protecting users, data, and applications regardless of where they sit.`,
+    id: 'data-protection',
+    title: 'Data Protection',
+    icon: 'data',
+    headline: "You can't always prevent the breach. You can shrink the blast radius.",
+    description: `Every AI and digital initiative ultimately runs on data — which makes data both the prize and the liability. I help organizations minimize exposure across the data lifecycle with the full set of data protection disciplines: data security and classification, encryption, tokenization, and minimization. The goal is simple — reduce how much sensitive data is exposed, and contain the damage if an attacker ever gets through.`,
     outcomes: [
-      'Led global technology operations across 5 countries with unified security architecture',
-      'Implemented advanced threat and vulnerability management reducing remediation time by 87%',
-      'Built security programs spanning on-prem, cloud, and hybrid infrastructure environments',
+      'Implement encryption, tokenization, and data minimization to reduce sensitive-data exposure and blast radius',
+      'Built risk and compliance programs aligned with ISO 27001, HITRUST, HIPAA, and GDPR — certified on first audit with zero critical findings',
+      'Design data classification and governance frameworks across multiple regulatory regimes',
     ],
   },
 ]
@@ -96,18 +84,18 @@ export const experience = [
   {
     id: 0,
     company: 'Accenture',
-    role: 'Managing Director, Secure Digital Core Cybersecurity Practice Lead — US',
+    role: 'Managing Director, Secure, Responsible AI & Data Protection Practice Lead — Americas',
     period: 'March 2026 - Present',
     location: 'Atlanta, GA',
     highlights: [
-      'Lead the US Secure Digital Core cybersecurity practice, helping enterprises architect and operate security programs across platform, cloud, application, zero trust, and infrastructure domains.',
-      'Advise C-suite and CISO clients on security strategy, translating complex technical risk into business-aligned roadmaps.',
-      'Drive practice growth across Platform Security, Cloud & Application Security, Zero Trust, and SASE & Infrastructure Security.',
+      'Lead the Secure, Responsible AI & Data Protection practice across the Americas — US, Canada, and LATAM — helping enterprises adopt AI safely while protecting the data underneath.',
+      'Advise C-suite, CISO, and CDO clients on Security for AI, AI for Security, and Data Protection, translating fast-moving technical risk into business-aligned roadmaps.',
+      'Drive growth across a rapidly expanding practice spanning AI governance and guardrails, AI-augmented security operations, and data protection.',
     ],
     metrics: [
-      { label: 'Scope', value: 'US Practice' },
-      { label: 'Focus', value: 'Cybersecurity' },
-      { label: 'Domains', value: '4 Practice Areas' },
+      { label: 'Scope', value: 'Americas' },
+      { label: 'Focus', value: 'Secure & Responsible AI' },
+      { label: 'Domains', value: '3 Practice Areas' },
     ],
   },
   {
@@ -359,21 +347,21 @@ export const education = [
 // ----------------------------------------------------------------------------
 export const thoughtLeadership = [
   {
-    title: 'Why Zero Trust Fails Without Platform Security',
-    category: 'Zero Trust',
-    description: 'Most Zero Trust initiatives focus on network and identity — but ignore the platforms where data actually lives',
+    title: 'Securing the Enterprise Rush to GenAI',
+    category: 'Security for AI',
+    description: 'Guardrails, governance, and controls that let the business move fast on AI without inheriting unmanaged risk.',
     status: 'coming-soon',
   },
   {
-    title: 'The CISO\'s Cloud Security Blind Spot',
-    category: 'Cloud Security',
-    description: 'Cloud-native doesn\'t mean cloud-secure. The gaps most organizations miss during migration.',
+    title: 'Rebuilding the SOC for an AI-Speed Adversary',
+    category: 'AI for Security',
+    description: 'Attackers have AI and a lower barrier to entry. What a security operation redesigned around AI actually looks like.',
     status: 'coming-soon',
   },
   {
-    title: 'SASE Beyond the Buzzword',
-    category: 'SASE',
-    description: 'What a pragmatic SASE rollout actually looks like — and what vendors won\'t tell you',
+    title: 'Shrinking the Blast Radius',
+    category: 'Data Protection',
+    description: 'Why encryption, tokenization, and data minimization are your last and best line of defense.',
     status: 'coming-soon',
   },
 ]
@@ -408,17 +396,17 @@ export const terminalCommands = {
   exit      - Exit terminal mode`,
   whoami: `Paul Falor
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Cybersecurity Practice Lead | Secure Digital Core @ Accenture
+Practice Lead, Secure, Responsible AI & Data Protection — Americas @ Accenture
 Location: Atlanta, GA
 Georgia CIO of the Year - InspireCIO
 20+ years leading global security & technology operations`,
-  skills: `Technical Expertise
+  skills: `Focus Areas
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Security:     ISO27001, HITRUST, PCI-DSS, SOC2
-Compliance:   HIPAA, GDPR, NIST 800-53
-Cloud:        Full-scale migration, 99.95% uptime
-AI/ML:        AI-assisted development, 90%+ efficiency gains
-Leadership:   Global teams across 5 countries`,
+Security for AI:   AI governance, guardrails, model & pipeline security
+AI for Security:   AI-augmented SOC, automated detection & response
+Data Protection:   Encryption, tokenization, data minimization
+Frameworks:        NIST AI RMF, ISO 42001, EU AI Act, ISO27001, GDPR
+Leadership:        Practice across US, Canada & LATAM`,
   exp: `Career Timeline
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 2014-Present  CIO, North Highland
