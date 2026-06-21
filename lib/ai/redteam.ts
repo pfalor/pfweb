@@ -90,12 +90,17 @@ export function finalizeResult(raw: RedteamResult): RedteamResult {
   }
 }
 
-async function runRedteam(model: string, document: string): Promise<RedteamResult> {
+async function runRedteam(
+  model: string,
+  document: string,
+  maxRetries?: number
+): Promise<RedteamResult> {
   const { object } = await generateObject({
     model,
     schema: RedteamSchema,
     system: redteamSystemPrompt(),
     prompt: wrapDocument(document),
+    ...(maxRetries !== undefined ? { maxRetries } : {}),
   })
   return object
 }
@@ -104,10 +109,14 @@ export async function analyzePolicy(
   document: string
 ): Promise<{ result: RedteamResult; model: string }> {
   try {
-    const raw = await runRedteam(SONNET, document)
+    // Cap retries so an unavailable Sonnet (e.g. credits exhausted) fails over
+    // to Haiku quickly instead of burning the function's time budget on backoff.
+    const raw = await runRedteam(SONNET, document, 1)
     return { result: finalizeResult(raw), model: 'Claude Sonnet 4.6' }
-  } catch {
+  } catch (err) {
     // Sonnet unavailable — fall back to Haiku so the experience still works.
+    // Warn so the silent model downgrade is visible in logs.
+    console.warn('[ai/redteam] Sonnet unavailable, falling back to Haiku', err)
     const raw = await runRedteam(HAIKU, document)
     return { result: finalizeResult(raw), model: 'Claude Haiku 4.5' }
   }

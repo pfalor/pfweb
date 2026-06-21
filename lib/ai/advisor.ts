@@ -66,12 +66,13 @@ function deEmDash(text: string): string {
   return text.replace(/\s*[—–]\s*/g, ', ')
 }
 
-async function runModel(model: string, redTeam: boolean, history: ChatTurn[], message: string): Promise<AdvisorAnswer> {
+async function runModel(model: string, redTeam: boolean, history: ChatTurn[], message: string, maxRetries?: number): Promise<AdvisorAnswer> {
   const { object } = await generateObject({
     model,
     schema: AdvisorSchema,
     system: systemPrompt(redTeam),
     messages: toModelMessages(history, message),
+    ...(maxRetries !== undefined ? { maxRetries } : {}),
   })
   // Keep only citations that match known labels.
   object.citations = object.citations.filter((c) => LABELS.includes(c))
@@ -91,14 +92,17 @@ export async function askAdvisor(opts: {
 
   if (haiku.onScope && (haiku.escalate || haiku.confidence === 'low')) {
     try {
-      const sonnet = await runModel(SONNET, redTeam, history, opts.message)
+      // Cap retries so an unavailable Sonnet fails over to Haiku quickly rather
+      // than exhausting the route's time budget on backoff (which caused 504s).
+      const sonnet = await runModel(SONNET, redTeam, history, opts.message, 1)
       return {
         ...sonnet,
         model: 'Claude Sonnet 4.6',
         routedReason: 'Escalated from Haiku for a nuanced question',
       }
-    } catch {
+    } catch (err) {
       // Sonnet unavailable (e.g., free-tier gateway). Keep Haiku's answer.
+      console.warn('[ai/chat] Sonnet escalation failed, keeping Haiku answer', err)
       return {
         ...haiku,
         model: 'Claude Haiku 4.5',

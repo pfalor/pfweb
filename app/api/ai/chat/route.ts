@@ -4,7 +4,10 @@ import { detectInjection, detectPii } from '@/lib/ai/guardrails'
 import { rateLimit } from '@/lib/ai/ratelimit'
 
 export const runtime = 'nodejs'
-export const maxDuration = 30
+// 60s (matching /api/ai/redteam): a nuanced question runs Haiku then escalates
+// to Sonnet sequentially, which can exceed a 30s cap and 504 before the
+// Haiku fallback fires.
+export const maxDuration = 60
 
 const MAX_MESSAGE_LEN = 1000
 
