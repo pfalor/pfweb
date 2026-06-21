@@ -12,8 +12,18 @@ interface ApiResponse {
 
 export default function PlaygroundClient({
   starterAttacks,
+  recipe,
 }: {
   starterAttacks: { label: string; prompt: string }[]
+  recipe: {
+    framing: string
+    vulnerablePrompt: string
+    hardenedPrompt: string
+    injectionPatterns: { type: string; source: string }[]
+    outputFilterNote: string
+    outputBlockMessage: string
+    transparencyNote: string
+  }
 }) {
   const [message, setMessage] = useState('')
   const [vulnHistory, setVulnHistory] = useState<PlaygroundTurn[]>([])
@@ -158,6 +168,64 @@ export default function PlaygroundClient({
           {hardenedBadge && <p className="mt-3 text-sm text-emerald-300">{hardenedBadge}</p>}
         </div>
       </div>
+
+      <details className="mt-8 rounded-md border border-slate-700 bg-slate-800/20">
+        <summary className="cursor-pointer px-5 py-3 text-sm font-medium text-slate-200">
+          How this works (see the prompts and defenses)
+        </summary>
+        <div className="border-t border-slate-700 px-5 py-4 text-sm text-slate-300">
+          <p className="text-slate-400">{recipe.framing}</p>
+
+          <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div>
+              <h3 className="font-semibold text-red-300">Vulnerable bot prompt</h3>
+              <pre className="mt-2 overflow-x-auto whitespace-pre-wrap rounded bg-slate-900 p-3 text-xs text-slate-200">
+                {recipe.vulnerablePrompt}
+              </pre>
+            </div>
+            <div>
+              <h3 className="font-semibold text-emerald-300">Hardened bot prompt (Layer 2)</h3>
+              <pre className="mt-2 overflow-x-auto whitespace-pre-wrap rounded bg-slate-900 p-3 text-xs text-slate-200">
+                {recipe.hardenedPrompt}
+              </pre>
+            </div>
+          </div>
+
+          <h3 className="mt-6 font-semibold text-white">The three hardened layers</h3>
+
+          <div className="mt-3">
+            <p className="font-medium text-emerald-300">Layer 1: input guardrail (deterministic)</p>
+            <p className="mt-1 text-slate-400">
+              A known attack pattern is matched and blocked before the model is called. The patterns:
+            </p>
+            <ul className="mt-2 space-y-1">
+              {recipe.injectionPatterns.map((p) => (
+                <li key={p.type} className="text-xs">
+                  <span className="text-slate-200">{p.type}</span>
+                  <code className="ml-2 break-all text-slate-500">{p.source}</code>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="mt-4">
+            <p className="font-medium text-emerald-300">Layer 2: defensive system prompt</p>
+            <p className="mt-1 text-slate-400">
+              The hardened prompt shown above. It refuses manipulation and never reveals the value.
+            </p>
+          </div>
+
+          <div className="mt-4">
+            <p className="font-medium text-emerald-300">Layer 3: output filter (deterministic)</p>
+            <p className="mt-1 text-slate-400">{recipe.outputFilterNote}</p>
+            <pre className="mt-2 whitespace-pre-wrap rounded bg-slate-900 p-3 text-xs text-slate-300">
+              {recipe.outputBlockMessage}
+            </pre>
+          </div>
+
+          <p className="mt-6 text-xs text-slate-500">{recipe.transparencyNote}</p>
+        </div>
+      </details>
 
       {attempts > 0 && (
         <div className="mt-8 flex flex-wrap gap-3">
