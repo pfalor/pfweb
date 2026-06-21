@@ -31,12 +31,14 @@ export default function RedTeamClient() {
   const [data, setData] = useState<ApiResponse | null>(null)
   const [showScore, setShowScore] = useState(false)
   const [copied, setCopied] = useState(false)
+  const [copyFailed, setCopyFailed] = useState(false)
 
   async function analyze() {
     setLoading(true)
     setError(null)
     setData(null)
     setShowScore(false)
+    setCopyFailed(false)
     try {
       const res = await fetch('/api/ai/redteam', {
         method: 'POST',
@@ -67,9 +69,14 @@ export default function RedTeamClient() {
   }
 
   async function copySummary(summary: string) {
-    await navigator.clipboard.writeText(summary)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
+    try {
+      await navigator.clipboard.writeText(summary)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch {
+      setCopyFailed(true)
+      setTimeout(() => setCopyFailed(false), 2000)
+    }
   }
 
   const result = data?.result
@@ -146,7 +153,7 @@ export default function RedTeamClient() {
               className="rounded-md border border-slate-600 px-4 py-2 text-sm text-slate-200"
               onClick={() => copySummary(result.boardSummary)}
             >
-              {copied ? 'Copied' : 'Copy summary'}
+              {copyFailed ? 'Copy failed' : copied ? 'Copied' : 'Copy summary'}
             </button>
             <a
               className="rounded-md border border-slate-600 px-4 py-2 text-sm text-slate-200"
