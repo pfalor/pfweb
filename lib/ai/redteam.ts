@@ -7,6 +7,10 @@
 // mirroring lib/ai/advisor.ts.
 // ============================================================================
 
+import { generateObject } from 'ai'
+import { z } from 'zod'
+import { deEmDash } from './text'
+
 export function truncateDocument(
   text: string,
   max = 12000
@@ -14,10 +18,6 @@ export function truncateDocument(
   if (text.length <= max) return { text, truncated: false }
   return { text: text.slice(0, max), truncated: true }
 }
-
-import { generateObject } from 'ai'
-import { z } from 'zod'
-import { deEmDash } from './text'
 
 const SONNET = 'anthropic/claude-sonnet-4.6'
 const HAIKU = 'anthropic/claude-haiku-4.5'

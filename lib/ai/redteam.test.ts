@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
-import { truncateDocument } from './redteam'
 import {
+  truncateDocument,
   validateDocument,
   redteamSystemPrompt,
   wrapDocument,
