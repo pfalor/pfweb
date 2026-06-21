@@ -1,12 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { rateLimit } from '@/lib/ai/ratelimit'
-import { detectInjection } from '@/lib/ai/guardrails'
 import {
   validateSimRequest,
   isFinalTurn,
   generateBeat,
   generateResult,
-  wrapTranscript,
   SIM_DEPTH,
 } from '@/lib/ai/simulator'
 
@@ -35,11 +33,15 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: valid.error }, { status: 400 })
   }
 
-  // Informational only: the prompt already treats the transcript as untrusted data.
-  detectInjection(wrapTranscript(valid.history))
-
   try {
     if (isFinalTurn(valid.history)) {
+      const resultLimit = rateLimit(`sim-result:${ip}`, { max: 5 })
+      if (!resultLimit.ok) {
+        return NextResponse.json(
+          { error: 'Too many results requested. Please slow down.' },
+          { status: 429, headers: { 'retry-after': String(resultLimit.retryAfterSec) } }
+        )
+      }
       const { result, model } = await generateResult(valid.scenarioId, valid.history)
       return NextResponse.json({ kind: 'result', result, model })
     }
