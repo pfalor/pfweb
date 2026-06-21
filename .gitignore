@@ -37,3 +37,7 @@ next-env.d.ts
 # IDE
 .vscode
 .idea
+
+# Superpowers SDD scratch (ledger, task briefs/reports, review diffs, security report).
+# Deliverables live in docs/superpowers/; this dir is working scratch only.
+.superpowers/
