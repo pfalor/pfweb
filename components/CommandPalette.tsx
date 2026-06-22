@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { navigationItems } from '@/lib/data'
+import { navigationItems, experiences } from '@/lib/data'
 
 interface CommandPaletteProps {
   onOpenTerminal: () => void
@@ -38,6 +38,17 @@ export function CommandPalette({ onOpenTerminal }: CommandPaletteProps) {
       },
       category: 'Navigation',
     })),
+    ...experiences
+      .filter((exp) => !navigationItems.some((n) => n.href === exp.href))
+      .map((exp) => ({
+        id: exp.href,
+        label: `Go to ${exp.title}`,
+        action: () => {
+          window.location.href = exp.href
+          setIsOpen(false)
+        },
+        category: 'Experiences',
+      })),
     {
       id: 'terminal',
       label: 'Open Terminal Mode',
@@ -184,7 +195,7 @@ export function CommandPalette({ onOpenTerminal }: CommandPaletteProps) {
                 ) : (
                   <>
                     {/* Group by category */}
-                    {['Navigation', 'Features', 'Links'].map((category) => {
+                    {['Navigation', 'Experiences', 'Features', 'Links'].map((category) => {
                       const categoryCommands = filteredCommands.filter((cmd) => cmd.category === category)
                       if (categoryCommands.length === 0) return null
 
