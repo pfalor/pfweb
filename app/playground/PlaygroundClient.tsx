@@ -37,6 +37,7 @@ export default function PlaygroundClient({
   const [error, setError] = useState<string | null>(null)
   const [copied, setCopied] = useState(false)
   const [copyFailed, setCopyFailed] = useState(false)
+  const [lastAttack, setLastAttack] = useState<string | null>(null)
 
   async function attack(attackText: string) {
     const text = attackText.trim()
@@ -62,6 +63,7 @@ export default function PlaygroundClient({
       if (data.hardened.leaked) setBreached(true)
       setVulnHistory((prev) => [...prev, { role: 'user', content: text }, { role: 'assistant', content: data.vulnerable.reply }])
       setHardHistory((prev) => [...prev, { role: 'user', content: text }, { role: 'assistant', content: data.hardened.reply }])
+      setLastAttack(text)
       setMessage('')
     } catch {
       setError('Network error. Please try again.')
@@ -80,6 +82,7 @@ export default function PlaygroundClient({
     setCracked(false)
     setBreached(false)
     setError(null)
+    setLastAttack(null)
   }
 
   function cardHref(): string {
@@ -137,7 +140,7 @@ export default function PlaygroundClient({
           {starterAttacks.map((a) => (
             <button
               key={a.label}
-              onClick={() => attack(a.prompt)}
+              onClick={() => setMessage(a.prompt)}
               disabled={loading}
               className="rounded-full border border-slate-700 px-3 py-1 text-xs text-slate-300 hover:border-slate-500 disabled:opacity-50"
             >
@@ -148,6 +151,13 @@ export default function PlaygroundClient({
       </div>
 
       {error && <p className="mt-4 text-sm text-red-400">{error}</p>}
+
+      {lastAttack && (
+        <div className="mt-6 rounded-md border border-slate-700 bg-slate-800/30 px-4 py-3">
+          <div className="text-xs uppercase tracking-wide text-slate-500">Attack sent</div>
+          <p className="mt-1 whitespace-pre-wrap font-mono text-sm text-slate-200">{lastAttack}</p>
+        </div>
+      )}
 
       <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
         <div className="rounded-md border border-red-500/40 bg-slate-800/30 p-5">
