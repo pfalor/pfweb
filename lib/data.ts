@@ -381,14 +381,45 @@ export const projects: { title: string; description: string; tags: string[]; sta
 // ----------------------------------------------------------------------------
 // NAVIGATION
 // ----------------------------------------------------------------------------
+
+// INTERACTIVE EXPERIENCES — surfaced on the /experiences hub and in the command palette.
+export const experiences = [
+  {
+    title: 'Prompt Injection Playground',
+    description:
+      'Try to jailbreak two AI assistants side by side. One has no defenses, one is hardened. See which layer stops each attack.',
+    href: '/playground',
+  },
+  {
+    title: 'In the Chair',
+    description:
+      'Take the executive seat in a live AI security incident. Make the calls, then see how I would have played it.',
+    href: '/in-the-chair',
+  },
+  {
+    title: 'Red Team Your AI Policy',
+    description:
+      'Paste your AI policy, a vendor\'s claims, or a model card and get a framework-graded teardown against NIST AI RMF, the EU AI Act, and the OWASP LLM Top 10.',
+    href: '/red-team',
+  },
+  {
+    title: 'Agentic AI Threat Lab',
+    description:
+      'Run a simulated agentic AI exploit step by step, then deploy the controls that break the chain. Grounded in the OWASP agentic threat taxonomy.',
+    href: '/agentic-ai-threats',
+  },
+  {
+    title: 'AI Tools',
+    description:
+      'Ask Paul, a grounded advisor on secure and responsible AI, plus an AI Readiness Assessment and an Executive Briefing generator.',
+    href: '/ai-tools',
+  },
+]
+
 export const navigationItems = [
   { label: 'About', href: '#about' },
   { label: 'Practice Areas', href: '#practice-areas' },
-  { label: 'Threat Lab', href: '/agentic-ai-threats' },
-  { label: 'Red Team', href: '/red-team' },
-  { label: 'In the Chair', href: '/in-the-chair' },
-  { label: 'Playground', href: '/playground' },
-  { label: 'AI Tools', href: '/ai-tools' },
+  { label: 'Interactive', href: '/experiences' },
   { label: 'Insights', href: '#thought-leadership' },
   { label: 'Blog', href: 'https://blog.paulfalor.com' },
   { label: 'Impact', href: '#impact' },
