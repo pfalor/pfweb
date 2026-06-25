@@ -5,6 +5,7 @@ import { DataProvider } from '@/lib/DataContext'
 import { Hero } from '@/components/Hero'
 import { Summary } from '@/components/Summary'
 import { PracticeAreas } from '@/components/PracticeAreas'
+import { ControlGapTeaser } from '@/components/ControlGapTeaser'
 import { ThoughtLeadership } from '@/components/ThoughtLeadership'
 import { Metrics } from '@/components/Metrics'
 import { Timeline } from '@/components/Timeline'
@@ -35,6 +36,7 @@ export function ClientPage({ data }: ClientPageProps) {
         <Hero />
         <Summary />
         <PracticeAreas />
+        <ControlGapTeaser />
         <ThoughtLeadership />
         <Metrics />
         <Timeline />

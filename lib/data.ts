@@ -385,6 +385,12 @@ export const projects: { title: string; description: string; tags: string[]; sta
 // INTERACTIVE EXPERIENCES — surfaced on the /experiences hub and in the command palette.
 export const experiences = [
   {
+    title: 'The AI Control Gap',
+    description:
+      "The danger isn't the AI. It's the gap between how fast you adopt it and how fast you can control it. Locate your organization on the model in 90 seconds.",
+    href: '/ai-control-gap',
+  },
+  {
     title: 'Prompt Injection Playground',
     description:
       'Try to jailbreak two AI assistants side by side. One has no defenses, one is hardened. See which layer stops each attack.',
