@@ -14,17 +14,20 @@ describe('navigationItems', () => {
 })
 
 describe('experiences', () => {
-  it('lists five experiences, each with a title, description, and in-app href', () => {
-    expect(experiences).toHaveLength(5)
+  it('lists six experiences, each with a title, description, and in-app href', () => {
+    expect(experiences).toHaveLength(6)
     for (const e of experiences) {
       expect(e.title.length).toBeGreaterThan(0)
       expect(e.description.length).toBeGreaterThan(0)
       expect(e.href.startsWith('/')).toBe(true)
     }
   })
-  it('covers exactly the five experience routes', () => {
+  it('covers exactly the six experience routes', () => {
     expect(experiences.map((e) => e.href).sort()).toEqual(
-      ['/agentic-ai-threats', '/ai-tools', '/in-the-chair', '/playground', '/red-team']
+      ['/agentic-ai-threats', '/ai-control-gap', '/ai-tools', '/in-the-chair', '/playground', '/red-team']
     )
+  })
+  it('leads with the AI Control Gap signature framework', () => {
+    expect(experiences[0].href).toBe('/ai-control-gap')
   })
 })
